@@ -4,9 +4,9 @@ from django.http import HttpResponse
 # Create your views here.
 # defines function to reutrn httpresonse
 def index(request):
-    context = {
-        'name': 'Patrick',
-        'age': 23,
-        'nationality': 'British',
-    }
-    return render(request, 'index.html', context) #renders index.html file saved in templates folder which is in the root directory, name allows variable to be accessed in html file
+    return render(request, 'index.html') #renders index.html file saved in templates folder which is in the root directory, name allows variable to be accessed in html file
+
+def counter(request):
+    text = request.GET['text']
+    amount_of_words = len(text.split())
+    return render(request, 'counter.html', {'amount': amount_of_words})
