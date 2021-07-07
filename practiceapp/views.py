@@ -7,6 +7,6 @@ def index(request):
     return render(request, 'index.html') #renders index.html file saved in templates folder which is in the root directory, name allows variable to be accessed in html file
 
 def counter(request):
-    text = request.GET['text']
+    text = request.POST['text'] # uses csrf token 
     amount_of_words = len(text.split())
     return render(request, 'counter.html', {'amount': amount_of_words})
