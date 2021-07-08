@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'practiceapp',  # required to use the database
 ]
 
 MIDDLEWARE = [

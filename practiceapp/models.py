@@ -1,8 +1,6 @@
 from django.db import models
 
 # Create your models here.
-class Feature:
-    id: int
-    name: str
-    details: str
-    is_true: bool #checks if something is true or false
+class Feature(models.Model):    #Model makes it reference the database
+    name = models.CharField(max_length=100)
+    details = models.CharField(max_length=500)
