@@ -57,6 +57,9 @@ def logout(request):
     return redirect('/')
 
 def counter(request):
-    text = request.POST['text'] # uses csrf token 
-    amount_of_words = len(text.split())
-    return render(request, 'counter.html', {'amount': amount_of_words})
+    posts = [1, 2, 3, 4, 5, 'tim', 'tom', 'john']
+    return render(request, 'counter.html', {'posts': posts})
+
+def post(request, pk):  # takes pk as an input 
+    return render(request, 'post.html', {'pk':pk})
+

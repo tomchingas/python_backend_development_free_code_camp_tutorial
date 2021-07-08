@@ -7,4 +7,5 @@ urlpatterns = [
     path('register', views.register, name='register'),   # makes /register webaddress for user authentication
     path('login', views.login, name='login'),
     path('logout', views.logout, name='logout'),
+    path('post/<str:pk>', views.post, name='post'),     # <str:pk> makes the url 'home/post/pk' where pk is value of a string (and is whatever is in that position in the url )
     ]
