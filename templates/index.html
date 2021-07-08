@@ -74,7 +74,12 @@
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+<!-- =========================================================================== ADD LOGIN/LOGOUT BUTTON ============================================================== --> 
+          {% if user.is_authenticated %}
+          <li><a class="getstarted scrollto" href="logout">Logout</a></li>
+          {% else %}
+          <li><a class="getstarted scrollto" href="login">Login or Signup</a></li>
+          {% endif %}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -87,7 +92,12 @@
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
       <div class="row justify-content-center">
         <div class="col-xl-7 col-lg-9 text-center">
+<!-- =========================================================================== ADDED THIS IF STATEMENT TO GREET USER ONCE LOGGED IN =================================== --> 
+          {% if user.is_authenticated %}
+          <h1>Welcome {{user.username}}</h1>
+          {% else %}          
           <h1>One Page Bootstrap Website Template</h1>
+          {% endif %}
           <h2>We are team of talented designers</h2>
         </div>
       </div>
@@ -96,7 +106,7 @@
       </div>
 
       <div class="row icon-boxes">
- <!-- ============================================================================== THIS IS THE SECTION THAT REFERENCES THE MODEL DATABASE ============================== -->       
+<!-- ============================================================================== THIS IS THE SECTION THAT REFERENCES THE MODEL DATABASE ============================== -->       
         {% for feature in features %}
         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
           <div class="icon-box">

@@ -10,7 +10,7 @@ def index(request):
     features = Feature.objects.all() # assigns Feature model to features object
     return render(request, 'index.html', {'features': features}) # middle references the index.html file, last part references the features list
 
-# function to create user authentication
+# function to create user registration
 def register(request):
     if request.method == 'POST': # if this request is being sent by POST then we want to capture all of this info
         username = request.POST['username']
@@ -34,6 +34,27 @@ def register(request):
             return redirect('register')
     else:   
         return render(request, 'register.html')
+
+def login(request):
+    if request.method == 'POST':
+        username =request.POST['username']
+        password =request.POST['password']
+
+        user = auth.authenticate(username=username, password=password)
+
+        if user is not None: # checks if user is registered on platform
+            auth.login(request, user)   # logs in user
+            return redirect('/')    #redirects to home page
+        else:
+            messages.info(request, 'Credentials Invalid')   
+            return redirect('login')
+
+    else:
+        return render (request, 'login.html')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
 
 def counter(request):
     text = request.POST['text'] # uses csrf token 
